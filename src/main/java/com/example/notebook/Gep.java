@@ -1,10 +1,9 @@
-package com.example.nootbook;
+package com.example.notebook;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import org.hibernate.annotations.CollectionId;
 
 @Entity
 @Table(name = "gep")
