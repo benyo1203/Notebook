@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReNew Kft. - Felújított notebookok</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        section {
+            padding: 2rem;
+            text-align: center;
+        }
+        .intro {
+            margin: 1rem auto;
+            max-width: 800px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        .cta {
+            margin-top: 2rem;
+        }
+        .cta a {
+            background-color: #27ae60;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .cta a:hover {
+            background-color: #1e8449;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Üdvözlünk a ReNew Kft.-nél!</h1>
+</header>
+<section>
+    <p class="intro">
+        A ReNew Kft. Seholország fővárosában működik, és egyedülálló kínálattal rendelkezik gyárilag felújított notebookok terén.
+        Ha megbízható és költséghatékony megoldást keresel, nálunk garantáltan megtalálod az igényeidnek megfelelőt!
+    </p>
+    <div class="cta">
+        <a href="#" th:href="@{/termékek}">Tekintsd meg kínálatunkat</a>
+    </div>
+</section>
+</body>
+</html>
