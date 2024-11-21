@@ -1,9 +1,6 @@
 package com.example.notebook;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "gep")
@@ -40,6 +37,30 @@ public class Gep {
 
     @Column(name = "db")
     private int db;
+
+    @OneToOne
+    @JoinColumn(name = "processzorid", insertable = false, updatable = false)
+    private Processzor processzor;
+
+    @OneToOne
+    @JoinColumn(name = "oprendszerid", insertable = false, updatable = false)
+    private Oprendszer oprendszer;
+
+    public Processzor getProcesszor() {
+        return processzor;
+    }
+
+    public void setProcesszor(Processzor processzor) {
+        this.processzor = processzor;
+    }
+
+    public Oprendszer getOprendszer() {
+        return oprendszer;
+    }
+
+    public void setOprendszer(Oprendszer oprendszer) {
+        this.oprendszer = oprendszer;
+    }
 
     public int getId() {
         return id;

@@ -29,7 +29,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> auth.requestMatchers("/resources/**", "/",
-                "/index").authenticated().requestMatchers("/admin/**").hasRole("ADMIN")).formLogin(form -> form.defaultSuccessUrl("/home").permitAll()).logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll());
+                "/index", "/termekek/**").permitAll().requestMatchers("/admin/**").hasAnyRole("ADMIN").anyRequest().authenticated()).formLogin(form -> form.defaultSuccessUrl("/").permitAll()).logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll());
         return http.build();
     }
 
