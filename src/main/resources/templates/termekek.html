@@ -2,9 +2,60 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Termékek</title>
+    <style>
+        .product-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px;
+            width: 300px;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+        }
+        .product-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .product-price {
+            color: #e63946;
+            font-size: 16px;
+            margin: 8px 0;
+        }
+        .product-details {
+            font-size: 14px;
+            color: #555;
+        }
+        .product-button {
+            margin-top: 12px;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .product-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-
+<div>
+    <h1>Elérhető termékek</h1>
+    <div th:each="gep : ${gepek}" class="product-card">
+        <div class="product-title" th:text="${gep.getGyártó()} + ' ' + ${gep.típus}"></div>
+        <div class="product-price" th:text="${gep.getÁr()} + ' Ft'"></div>
+        <div class="product-details">
+            <p th:text="'Kijelző: ' + ${gep.getKijelző()} + ' \'\''">
+            <p th:text="'Memória: ' + ${gep.getMemória()} + ' GB'"></p>
+            <p th:text="'Merevlemez: ' + ${gep.getMerevlemez()} + ' GB'"></p>
+            <p th:text="'Videóvezérlő: ' + ${gep.getVideóvezérlő()}"></p>
+            <p th:text="'Processzor: ' + ${gep.getProcid() != null ? gep.getProcid().getGyártó() + ' ' + gep.getProcid().getTípus() : 'Nincs információ'}"></p>
+            <p th:if="${gep.getOpid() != null}" th:text="'Operációs rendszer: ' + ${gep.getOpid().getNév()}"></p>
+        </div>
+        <a href="#" class="product-button">Kosárba</a>
+    </div>
+</div>
 </body>
 </html>

@@ -1,17 +1,32 @@
 package com.example.notebook;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "oprendszer")
 public class Oprendszer {
     @Id
-    public int id;
+    private int id;
 
     @Column(name = "nev")
-    public String név;
+    private String név;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNév() {
+        return név;
+    }
+
+    public void setNév(String név) {
+        this.név = név;
+    }
 
 }

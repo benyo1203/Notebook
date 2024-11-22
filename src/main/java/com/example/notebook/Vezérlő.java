@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class Vezérlő {
@@ -15,24 +18,19 @@ public class Vezérlő {
 
     @GetMapping("/index")
     public String Fooldal() {
-
         return "index";
     }
 
     @GetMapping("/termekek")
     public String Termekek(Model model) {
-        String str = Terméknév();
-        model.addAttribute("str", str);
+        List<Gep> gepek = (List<Gep>) gepRepo.findAll();
+        model.addAttribute("gepek", gepek);
         return "termekek";
     }
 
-    String Terméknév() {
-        String str = "";
-        for (Gep gep : gepRepo.findAll()) {
-            str += gep.getGyártó() + " " + gep.getTípus() + "<br>";
-        }
-        return str;
+    @GetMapping("/kapcsolat")
+    public String Kapcsolat(Model model) {
+        
     }
-
 
 }

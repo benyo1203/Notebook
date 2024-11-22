@@ -15,7 +15,7 @@ public class Gep {
     private String típus;
 
     @Column(name = "kijelzo")
-    private double kijelző;
+    private int kijelző;
 
     @Column(name = "memoria")
     private int memória;
@@ -39,27 +39,27 @@ public class Gep {
     private int db;
 
     @OneToOne
-    @JoinColumn(name = "processzorid", insertable = false, updatable = false)
-    private Processzor processzor;
+    @JoinColumn(name = "id")
+    private Oprendszer opid;
 
     @OneToOne
-    @JoinColumn(name = "oprendszerid", insertable = false, updatable = false)
-    private Oprendszer oprendszer;
+    @JoinColumn(name = "id")
+    private Processzor procid;
 
-    public Processzor getProcesszor() {
-        return processzor;
+    public Processzor getProcid() {
+        return procid;
     }
 
-    public void setProcesszor(Processzor processzor) {
-        this.processzor = processzor;
+    public void setProcid(Processzor procid) {
+        this.procid = procid;
     }
 
-    public Oprendszer getOprendszer() {
-        return oprendszer;
+    public Oprendszer getOpid() {
+        return opid;
     }
 
-    public void setOprendszer(Oprendszer oprendszer) {
-        this.oprendszer = oprendszer;
+    public void setOpid(Oprendszer opid) {
+        this.opid = opid;
     }
 
     public int getId() {
@@ -86,11 +86,11 @@ public class Gep {
         this.típus = típus;
     }
 
-    public double getKijelző() {
+    public int getKijelző() {
         return kijelző;
     }
 
-    public void setKijelző(double kijelző) {
+    public void setKijelző(int kijelző) {
         this.kijelző = kijelző;
     }
 
