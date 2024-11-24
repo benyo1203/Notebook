@@ -20,8 +20,9 @@ public class Vezérlő {
     @Autowired private OprendszerRepo oprendszerRepo;
     @Autowired private ProcesszorRepo processzorRepo;
 
-    @Autowired UserService userService;
+    @Autowired CustomUserDetailsService userService;
     @Autowired private PasswordEncoder passwordEncoder;
+    @Autowired private UserDetailsService userDetailsService;
 
     @GetMapping("/index")
     public String Főoldal() {
@@ -41,21 +42,25 @@ public class Vezérlő {
         return "register";
     }
 
-    @PostMapping("/register")
-    public String Regisztálás(@ModelAttribute("user") User user){
+    @Autowired
+    private UserRepository userRepo;
+    @PostMapping("/register_feldolgozas")
+    public String Regisztálás(@ModelAttribute User user, Model model) {
         String username = user.getUsername();
         String email = user.getEmail();
         String password = new BCryptPasswordEncoder().encode(user.getPassword());
-
-        user.setRole("USER");
-        userService.FelhasználóMentése(user);
-        return "redirect:/index";
+        user.setPassword("USER");
+        userRepo.save(user);
+        model.addAttribute("id", user.getUsername());
+        return "login";
     }
 
     @GetMapping("/login")
     public String Bejelentkezés(){
         return "login";
     }
+
+
 
 
 

@@ -11,10 +11,10 @@
 <div class="login-wrap">
     <h2>Bejelentkezés</h2>
     <div class="form">
-        <form action="/login" method="post">
+        <form th:action="@{/login}"  method="post">
             <input type="text" placeholder="Felhasználónév" name="un" />
             <input type="password" placeholder="Jelszó" name="pw" />
-            <button type="submit"> Belépés </button>
+            <input type="submit" value="Belépés" />
             <a th:href="@{/register}"> <p> Nincs még felhasználód? Regisztrálj! </p></a>
         </form>
     </div>

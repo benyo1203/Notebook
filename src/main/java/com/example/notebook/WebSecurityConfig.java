@@ -20,7 +20,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class WebSecurityConfig {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private CustomUserDetailsService userDetailsService;
 
     @Bean
     public static PasswordEncoder passwordEncoder() {
@@ -32,7 +32,8 @@ public class WebSecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // CSRF védelem kikapcsolása
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/resources/**", "/", "/index", "/layout", "/css/**",  "/login/**", "/register/**").permitAll() // Nyilv
+                        .requestMatchers("/resources/**", "/", "/index", "/layout", "/css/**",  "/login/**",
+                                "/register/**", "/termekek", "jelszoteszt").permitAll() // Nyilv
                         // ános oldalak
                         .requestMatchers("/kapcsolat").hasAnyRole("USER", "ADMIN") // Termékoldalak (user és admin)
                         .requestMatchers("/admin/**").hasRole("ADMIN") // Admin oldalak

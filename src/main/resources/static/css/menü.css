@@ -22,12 +22,17 @@ nav {
 
 nav ul {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Távolság a menü elemek között */
     align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
 }
+
+nav ul .login {
+    margin-left: auto; /* A Bejelentkezés elem jobbra kerül */
+}
+
 
 nav ul li {
     margin: 0 1rem;
