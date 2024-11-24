@@ -1,6 +1,5 @@
 package com.example.notebook;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,8 +18,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true)
 public class WebSecurityConfig {
+
     @Autowired
     private UserDetailsService userDetailsService;
+
     @Bean
     public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -28,8 +29,26 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> auth.requestMatchers("/resources/**", "/",
-                "/index", "/termekek/**").permitAll().requestMatchers("/admin/**").hasAnyRole("ADMIN").anyRequest().authenticated()).formLogin(form -> form.defaultSuccessUrl("/").permitAll()).logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll());
+        http
+                .csrf(csrf -> csrf.disable()) // CSRF védelem kikapcsolása
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/resources/**", "/", "/index", "/layout", "/css/**",  "/login/**", "/register/**").permitAll() // Nyilv
+                        // ános oldalak
+                        .requestMatchers("/kapcsolat").hasAnyRole("USER", "ADMIN") // Termékoldalak (user és admin)
+                        .requestMatchers("/admin/**").hasRole("ADMIN") // Admin oldalak
+                        .anyRequest().authenticated() // Minden más kérés autentikált felhasználót igényel
+                )
+                .formLogin(form -> form
+                        .loginPage("/login") // Egyéni login oldal
+                        .defaultSuccessUrl("/") // Bejelentkezés utáni alapértelmezett oldal
+                        .permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutSuccessUrl("/") // Kijelentkezés utáni oldal
+                        .permitAll()
+                );
+
         return http.build();
     }
 

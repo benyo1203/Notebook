@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReNew Kft. - Felújított notebookok</title>
+    <link rel="stylesheet" th:href="@{/css/menü.css}">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -49,6 +50,7 @@
     </style>
 </head>
 <body>
+<div th:replace="~{layout :: menu}"></div>
 <header>
     <h1>Üdvözlünk a ReNew Kft.-nél!</h1>
 </header>
@@ -58,7 +60,7 @@
         Ha megbízható és költséghatékony megoldást keresel, nálunk garantáltan megtalálod az igényeidnek megfelelőt!
     </p>
     <div class="cta">
-        <a href="#" th:href="@{/termekek}">Tekintsd meg kínálatunkat</a>
+        <a th:href="@{/termekek}">Tekintsd meg kínálatunkat</a>
     </div>
 </section>
 </body>

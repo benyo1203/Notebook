@@ -17,9 +17,9 @@ public class CustomerUserDetailsServices implements UserDetailsService {
     @Autowired private UserRepository userRepo;
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = userRepo.findByUser(userName).orElseThrow(() -> new UsernameNotFoundException("Email" + userName + " not found"));
+        User user = userRepo.findByUsername(userName).orElseThrow(() -> new UsernameNotFoundException("Email" + userName + " not found"));
 
-        return new org.springframework.security.core.userdetails.User(user.getUser(), user.getPassword(),
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
                 getAuthorities(user));
     }
     private Collection<? extends GrantedAuthority> getAuthorities(User user) {

@@ -1,0 +1,63 @@
+body, ul, li, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding-top: 60px; /* A menü miatt helyet adunk a tartalomnak */
+}
+
+/* NAVIGATION MENU */
+nav {
+    background-color: #2c3e50;
+    padding: 0.5rem 1rem;
+    position: fixed; /* Fix pozícióval az oldal tetején */
+    top: 0; /* A legfelső sorban jelenjen meg */
+    left: 0; /* A bal oldalon kezdődjön */
+    width: 100%; /* A menü teljes szélességű */
+    z-index: 1000; /* A menü mindig a tartalom fölött legyen */
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #1abc9c;
+    color: white;
+}
+
+/* MOBILE RESPONSIVE MENU */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+
+    nav ul li a {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/menü.css}">
+</head>
+<body>
+<nav th:fragment="menu">
+  <ul>
+    <li><a th:href="@{/index}">Főoldal</a></li>
+    <li><a th:href="@{/termekek}">Termékek</a></li>
+    <li><a th:href="@{/kapcsolat}">Kapcsolat</a></li>
+    <li><a th:href="@{login}">Bejelentkezés</a></li>
+  </ul>
+</nav>
+<div th:fragment="content"></div>
+</body>
+</html>

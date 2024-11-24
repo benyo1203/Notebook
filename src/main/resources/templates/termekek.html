@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Termékek</title>
+    <link rel="stylesheet" th:href="@{/css/menü.css}">
     <style>
         .product-card {
             border: 1px solid #ccc;
@@ -41,6 +42,7 @@
     </style>
 </head>
 <body>
+<div th:replace="~{layout :: menu}"></div>
 <div>
     <h1>Elérhető termékek</h1>
     <div th:each="gep : ${gepek}" class="product-card">
