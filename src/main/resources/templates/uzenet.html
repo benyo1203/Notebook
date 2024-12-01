@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kapcsolat</title>
+  <link rel="stylesheet" th:href="@{/css/üzenet.css}">
+  <link rel="stylesheet" th:href="@{/css/menü.css}">
+</head>
+<body>
+<div th:replace="~{layout :: menu}"></div>
+<h1>Üzenet küldése</h1>
+
+<!-- Üzenet küldése űrlap -->
+<form action="#" th:action="@{/sendMessage}" method="post" th:object="${uzenet}">
+  <textarea name="content" th:field="*{content}" placeholder="Írd ide az üzeneted..." required></textarea>
+  <button type="submit">Üzenet küldése</button>
+</form>
+
+
+</body>
+</html>

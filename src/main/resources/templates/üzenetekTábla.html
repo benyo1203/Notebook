@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Üzenetek</title>
+    <link rel="stylesheet" th:href="@{/css/üzenetek.css}">
+    <link rel="stylesheet" th:href="@{/css/menü.css}">
+</head>
+<body>
+<div th:replace="~{layout :: menu}"></div>
+<h1>Üzenetek</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Küldő</th>
+        <th>Üzenet</th>
+        <th>Küldés ideje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="uzenet : ${uzenetek}">
+        <td th:text="${uzenet.sender.username}">Küldő neve</td>
+        <td th:text="${uzenet.content}">Üzenet tartalma</td>
+        <td th:text="${uzenet.timestamp}">Küldés ideje</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

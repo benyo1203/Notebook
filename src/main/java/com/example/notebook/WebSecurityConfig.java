@@ -32,16 +32,16 @@ public class WebSecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // CSRF védelem kikapcsolása
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/resources/**", "/", "/index", "/layout", "/css/**",  "/login/**",
-                                "/register/**", "/termekek", "jelszoteszt").permitAll() // Nyilv
-                        // ános oldalak
-                        .requestMatchers("/kapcsolat").hasAnyRole("USER", "ADMIN") // Termékoldalak (user és admin)
+                        .requestMatchers("/resources/**", "/", "/index", "/layout", "/css/**",
+                                "/register/**", "/termekek", "/jelszoteszt", "/contact", "/sendMessage", "/messages",
+                                "/api/**").permitAll()
+                        // Nyilvános oldalak
                         .requestMatchers("/admin/**").hasRole("ADMIN") // Admin oldalak
                         .anyRequest().authenticated() // Minden más kérés autentikált felhasználót igényel
                 )
                 .formLogin(form -> form
                         .loginPage("/login") // Egyéni login oldal
-                        .defaultSuccessUrl("/") // Bejelentkezés utáni alapértelmezett oldal
+                        .defaultSuccessUrl("/index", true) // Bejelentkezés utáni alapértelmezett oldal
                         .permitAll()
                 )
                 .logout(logout -> logout
@@ -58,3 +58,4 @@ public class WebSecurityConfig {
         return configuration.getAuthenticationManager();
     }
 }
+

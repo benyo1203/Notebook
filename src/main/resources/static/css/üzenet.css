@@ -1,0 +1,69 @@
+/* Alap stílusok az oldalnak */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Fejléc stílus */
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* A formhoz tartozó konténer */
+form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Szövegterület stílus */
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    resize: none; /* Ne lehessen átméretezni */
+}
+
+/* Placeholder szöveg stílus */
+textarea::placeholder {
+    color: #aaa;
+}
+
+/* A gomb stílus */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effektus a gombon */
+button:hover {
+    background-color: #45a049;
+}
+
+/* A gomb fókusz állapotának stílusa */
+button:focus {
+    outline: none;
+}
