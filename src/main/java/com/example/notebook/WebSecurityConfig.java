@@ -33,7 +33,7 @@ public class WebSecurityConfig {
                 .csrf(csrf -> csrf.disable()) // CSRF védelem kikapcsolása
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/resources/**", "/", "/index", "/layout", "/css/**",
-                                "/register/**", "/termekek", "/jelszoteszt", "/contact", "/sendMessage", "/messages",
+                                "/register/**", "/jelszoteszt", "/contact", "/sendMessage", "/messages",
                                 "/api/**").permitAll()
                         // Nyilvános oldalak
                         .requestMatchers("/admin/**").hasRole("ADMIN") // Admin oldalak
